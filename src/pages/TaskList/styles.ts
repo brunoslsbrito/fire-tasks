@@ -1,6 +1,10 @@
 import styled from 'styled-components';
+
 import addLight from '../../assets/icons/addiconlight.svg';
 import addDark from '../../assets/icons/addicondark.svg';
+
+import trashLight from '../../assets/icons/trashlight.svg';
+import trashDark from '../../assets/icons/trashdark.svg';
 
 export const Container = styled.div`
   display: flex;
@@ -130,4 +134,46 @@ export const AddIconDark = styled.img.attrs({
   height: 25px; 
   width: 25px;
   margin-left: 12px;
+`;
+
+export const TaskItemContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 50px;
+  border-bottom: ${({ theme }) => `1px solid ${theme.colors.secondary}`};
+`;
+
+export const TaskItemNumberText = styled.h2`
+  color: ${({ theme }) => theme.colors.neutral400};
+`;
+
+export const TaskItemNumberContainer = styled.div`
+  height: 50px;
+  display: flex;
+  width: 3%; 
+  min-width: 30px;
+  align-items: center;
+  justify-content: center;
+  border-right: ${({ theme }) => `1px solid ${theme.colors.secondary}`};
+  cursor: pointer;
+  &:hover {
+    background: ${({ theme }) => theme.colors.neutral100};
+  }
+`;
+
+export const TrashIconLight = styled.img.attrs({
+  src: trashLight,
+  alt: 'trashLight',
+})`
+  height: 25px; 
+  width: 25px;
+`;
+
+export const TrashIconDark = styled.img.attrs({
+  src: trashDark,
+  alt: 'trashDark',
+})`
+  height: 25px; 
+  width: 25px;
 `;

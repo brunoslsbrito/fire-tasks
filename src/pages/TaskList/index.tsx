@@ -11,7 +11,13 @@ import {
   ListHeaderContainer,
   NumberContainer,
   PlannedContainer,
-  Title, ListContainer,
+  Title,
+  ListContainer,
+  TaskItemContainer,
+  TaskItemNumberContainer,
+  TaskItemNumberText,
+  TrashIconLight,
+  TrashIconDark,
 } from './styles';
 
 import { Themes } from '../../styles/global';
@@ -26,18 +32,49 @@ interface ListItem {
   planned: string;
 }
 
+interface HoverProp {
+  isHover: boolean;
+  index: number;
+}
+
 const TaskList: React.FC<TaskListProps> = ({ theme }) => {
   const [taskList, setTaskList] = useState<Array<ListItem>>([]);
+  const [isHover, setHover] = useState<HoverProp>({ isHover: false, index: 0 });
 
   const onPressAdd = useCallback(() => {
-    setTaskList([...taskList, { description: '', estimate: '', planned: '' }]);
+    setTaskList([...taskList, { description: 'new', estimate: '1h', planned: 'Yes' }]);
   }, [taskList]);
 
+  const onPressDelete = (index: number) => {
+    setHover({ isHover: false, index: 0 });
+    setTaskList(taskList.filter((_, localIndex) => localIndex !== index));
+  };
+
+  const renderTrash = () => (
+    theme === Themes.LIGHT
+      ? <TrashIconLight />
+      : <TrashIconDark />
+  );
+
   const renderItem = (item: ListItem, index: number) => (
-    <h1>
-      {item.description}
-      {index}
-    </h1>
+    <TaskItemContainer key={index}>
+      <TaskItemNumberContainer
+        onClick={() => onPressDelete(index)}
+        onPointerOver={() => setHover({ isHover: true, index })}
+        onPointerLeave={() => setHover({ isHover: false, index: 0 })}
+      >
+        { isHover.isHover && isHover.index === index
+          ? (renderTrash()) : (
+            <TaskItemNumberText>
+              {index + 1}
+            </TaskItemNumberText>
+          )}
+      </TaskItemNumberContainer>
+      <h1>
+        {item.description}
+        {index}
+      </h1>
+    </TaskItemContainer>
   );
 
   return (
