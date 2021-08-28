@@ -61,7 +61,7 @@ export const DescriptionContainer = styled.div`
   min-width: 180px;
   align-items: center;
   justify-content: center;
-  border-left: ${({ theme }) => `1px solid ${theme.colors.secondary}`};
+
   border-right: ${({ theme }) => `1px solid ${theme.colors.secondary}`};
 `;
 
@@ -176,4 +176,55 @@ export const TrashIconDark = styled.img.attrs({
 })`
   height: 25px; 
   width: 25px;
+`;
+
+export const ItemDescriptionContainer = styled.div`
+  height: 50px;
+  display: flex;
+  width: 67%;
+  min-width: 180px;
+  align-items: center;
+  justify-content: center;
+  border-right: ${({ theme }) => `1px solid ${theme.colors.secondary}`}; 
+`;
+
+export const ItemDescriptionText = styled.input`
+  color: ${({ theme }) => theme.colors.neutral400};
+  width: 98%;
+  height: 80%; 
+  border: none;
+  font-family: 'Nunito Sans';
+  font-size: 20px;
+  outline: none;
+  background: ${({ theme }) => theme.colors.background};
+`;
+
+export const ItemEstimateText = styled.input`
+  color: ${({ theme }) => theme.colors.neutral400};
+  width: 18%;
+  height: 80%; 
+  border: none;
+  font-family: 'Nunito Sans';
+  font-size: 20px;
+  outline: none;
+  background: ${({ theme }) => theme.colors.background};
+  text-align: center;
+`;
+
+export const ItemEstimateText2 = styled.text`
+  color: ${({ theme }) => theme.colors.neutral400};
+  font-family: 'Nunito Sans';
+  font-size: 20px; 
+  margin-left: -5px;
+`;
+
+export const ItemEstimateContainer = styled.div`
+  height: 50px;
+  display: flex;
+  width: 15%;
+
+  min-width: 180px;
+  align-items: center;
+  justify-content: center;
+  border-right: ${({ theme }) => `1px solid ${theme.colors.secondary}`};
 `;

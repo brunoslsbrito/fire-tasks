@@ -2,7 +2,8 @@ import React, { useCallback, useState } from 'react';
 import {
   AddIconDark,
   AddIconLight,
-  AddItemContainer, AddItemTitle,
+  AddItemContainer,
+  AddItemTitle,
   Container,
   DescriptionContainer,
   EstimateContainer,
@@ -18,6 +19,8 @@ import {
   TaskItemNumberText,
   TrashIconLight,
   TrashIconDark,
+  ItemDescriptionContainer,
+  ItemDescriptionText, ItemEstimateContainer, ItemEstimateText, ItemEstimateText2,
 } from './styles';
 
 import { Themes } from '../../styles/global';
@@ -42,12 +45,27 @@ const TaskList: React.FC<TaskListProps> = ({ theme }) => {
   const [isHover, setHover] = useState<HoverProp>({ isHover: false, index: 0 });
 
   const onPressAdd = useCallback(() => {
-    setTaskList([...taskList, { description: 'new', estimate: '1h', planned: 'Yes' }]);
+    setTaskList([...taskList, { description: '', estimate: '', planned: 'Yes' }]);
   }, [taskList]);
 
   const onPressDelete = (index: number) => {
     setHover({ isHover: false, index: 0 });
     setTaskList(taskList.filter((_, localIndex) => localIndex !== index));
+  };
+
+  const onEditDescription = (index: number) => (e: any) => {
+    const newArray = [...taskList];
+    newArray[index].description = e.target.value;
+    setTaskList(newArray);
+  };
+
+  const onEditEstimate = (index: number) => (e: any) => {
+    if (e.target.validity.valid && e.target.value.length < 3) {
+      const newArray = [...taskList];
+      const newValue = e.target.value.replace('h', '');
+      newArray[index].estimate = newValue;
+      setTaskList(newArray);
+    }
   };
 
   const renderTrash = () => (
@@ -70,10 +88,26 @@ const TaskList: React.FC<TaskListProps> = ({ theme }) => {
             </TaskItemNumberText>
           )}
       </TaskItemNumberContainer>
-      <h1>
-        {item.description}
-        {index}
-      </h1>
+      <ItemDescriptionContainer>
+        <ItemDescriptionText
+          value={taskList[index].description}
+          placeholder="Add Description"
+          onChange={onEditDescription(index)}
+        />
+      </ItemDescriptionContainer>
+      <ItemEstimateContainer>
+        <ItemEstimateText
+          value={taskList[index].estimate}
+          onChange={onEditEstimate(index)}
+          placeholder="0h"
+          type="text"
+          pattern="[0-9]*"
+        />
+        {
+          taskList[index].estimate.length > 0
+          && (<ItemEstimateText2>h</ItemEstimateText2>)
+        }
+      </ItemEstimateContainer>
     </TaskItemContainer>
   );
 
