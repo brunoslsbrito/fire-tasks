@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from 'styled-components';
 
-import { Star } from 'react-github-buttons';
 import {
   Container,
   GithubIcon,
@@ -34,7 +33,6 @@ const Header: React.FC<HeaderProps> = ({ toggleTheme }) => {
         <IconButton onClick={onClickGithub}>
           <GithubIcon />
         </IconButton>
-        <Star repo="billions-task-manager" owner="leongdev" />
       </IconsContainer>
     </Container>
   );
