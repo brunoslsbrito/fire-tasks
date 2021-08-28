@@ -1,25 +1,24 @@
-import React, { useEffect, useState } from 'react';
-import { Container, HeaderContainer } from './styles';
+import React, { useCallback, useState } from 'react';
+import { ThemeProvider } from 'styled-components';
+import Header from '../../components/header';
+import GlobalStyle, { Themes } from '../../styles/global';
 
-const Home: React.FC<any> = () => {
-  const [width, setWidth] = useState(window.innerWidth);
-  const [height, setHeight] = useState(window.innerHeight);
-  // const [taskList, setTaskList] = useState([]);
+import light from '../../styles/themes/light';
+import dark from '../../styles/themes/dark';
 
-  const handleWindowResize = () => {
-    setWidth(window.innerWidth);
-    setHeight(window.innerHeight);
-  };
+const Home: React.FC = () => {
+  const [theme, setTheme] = useState(light);
 
-  useEffect(() => {
-    window.addEventListener('resize', handleWindowResize);
-    return () => window.removeEventListener('resize', handleWindowResize);
-  }, []);
+  const toggleTheme = useCallback(() => (
+    theme.title === Themes.LIGHT ? setTheme(dark) : setTheme(light)), [theme]);
 
   return (
-    <Container width={width} height={height}>
-      <HeaderContainer />
-    </Container>
+    <ThemeProvider theme={theme}>
+      <div>
+        <GlobalStyle />
+        <Header toggleTheme={toggleTheme} />
+      </div>
+    </ThemeProvider>
   );
 };
 
