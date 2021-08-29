@@ -39,7 +39,7 @@ const Home: React.FC = () => {
             </ConvertButton>
           </TitleContainer>
         </TitleOutContainer>
-        <TaskList theme={theme.title} />
+        <TaskList theme={theme.title} convert={convert} />
       </div>
     </ThemeProvider>
   );

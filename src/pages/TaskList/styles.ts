@@ -6,6 +6,8 @@ import addDark from '../../assets/icons/addicondark.svg';
 import trashLight from '../../assets/icons/trashlight.svg';
 import trashDark from '../../assets/icons/trashdark.svg';
 
+import copy from '../../assets/icons/copyicon.svg';
+
 export const Container = styled.div`
   display: flex;
   align-items: center;
@@ -16,12 +18,11 @@ export const Container = styled.div`
 
 export const ListHeaderOutContainer = styled.div`
   display: flex;
+  flex-direction: column;
   width: 96%;
   margin-top: 25px;
   min-width: 700px;
-  border-top: ${({ theme }) => `1px solid ${theme.colors.secondary}`}; 
-  border-left: ${({ theme }) => `1px solid ${theme.colors.secondary}`}; 
-  border-right: ${({ theme }) => `1px solid ${theme.colors.secondary}`}; 
+  border-top: ${({ theme }) => `1px solid ${theme.colors.secondary}`};
   border-top-left-radius: 10px;
   border-top-right-radius: 10px; 
 `;
@@ -34,7 +35,7 @@ export const ListHeaderContainer = styled.div`
   border-bottom: ${({ theme }) => `1px solid ${theme.colors.secondary}`};
   border-top-left-radius: 10px; 
   border-top-right-radius: 10px;
-
+  justify-content: space-between;
 `;
 
 export const ListContainer = styled.div`
@@ -50,6 +51,11 @@ export const Title = styled.h1`
     color: ${({ theme }) => theme.colors.neutral600};
 `;
 
+export const CopyTitle = styled.h2`
+    color: ${({ theme }) => theme.colors.primary};
+  margin-left: 10px;
+`;
+
 export const AddItemTitle = styled.h3`
   margin-left: 10px;
     color: ${({ theme }) => theme.colors.neutral400};
@@ -61,8 +67,37 @@ export const DescriptionContainer = styled.div`
   min-width: 180px;
   align-items: center;
   justify-content: center;
-
   border-right: ${({ theme }) => `1px solid ${theme.colors.secondary}`};
+`;
+
+export const ListTitleContainer = styled.div`
+  display: flex;
+  min-width: 80px;
+  align-items: flex-start; 
+  margin-left: 15px;
+  margin-top: 5px;
+`;
+
+export const CopyButtonContainer = styled.div`
+  display: flex;
+  height: 50px;
+  width: 180px;
+  align-items: center;
+  justify-content: center;
+  border-left: ${({ theme }) => `1px solid ${theme.colors.secondary}`};
+`;
+
+export const CopyButtonInnerContainer = styled.div`
+  display: flex;
+  width: 90%;
+  height: 80%;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 10px;
+  justify-content: center;
+  &:hover {
+    background: ${({ theme }) => theme.colors.secondary};
+  }
 `;
 
 export const EstimateContainer = styled.div`
@@ -104,6 +139,19 @@ export const ListBottomContainer = styled.div`
   align-items: center;
 `;
 
+export const ListFinalBottomContainer = styled.div`
+  display: flex;
+  height: 10px;
+  width: 100%;
+  min-width: 700px;
+  border-bottom: ${({ theme }) => `1px solid ${theme.colors.secondary}`};
+  border-left: ${({ theme }) => `1px solid ${theme.colors.secondary}`};
+  border-right: ${({ theme }) => `1px solid ${theme.colors.secondary}`};
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px; 
+  align-items: center;
+`;
+
 export const AddItemContainer = styled.div`
   cursor: pointer;
   display: flex;
@@ -134,6 +182,15 @@ export const AddIconDark = styled.img.attrs({
   height: 25px; 
   width: 25px;
   margin-left: 12px;
+`;
+
+export const CopyIcon = styled.img.attrs({
+  src: copy,
+  alt: 'copy',
+})`
+  height: 25px; 
+  width: 25px;
+  margin-left: 15px;
 `;
 
 export const TaskItemContainer = styled.div`
@@ -211,11 +268,26 @@ export const ItemEstimateText = styled.input`
   text-align: center;
 `;
 
-export const ItemEstimateText2 = styled.text`
+export const ItemEstimateTextAdditive = styled.text`
   color: ${({ theme }) => theme.colors.neutral400};
   font-family: 'Nunito Sans';
   font-size: 20px; 
   margin-left: -5px;
+`;
+
+export const ItemPlannedText = styled.text`
+  color: ${({ theme }) => theme.colors.neutral400};
+  font-family: 'Nunito Sans';
+  font-size: 20px; 
+  margin-left: -5px;
+  width: 65px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 10px;
+  &:hover {
+    color: ${({ theme }) => theme.colors.secondary};
+    background: ${({ theme }) => theme.colors.neutral400};
+  }
 `;
 
 export const ItemEstimateContainer = styled.div`
@@ -227,4 +299,31 @@ export const ItemEstimateContainer = styled.div`
   align-items: center;
   justify-content: center;
   border-right: ${({ theme }) => `1px solid ${theme.colors.secondary}`};
+`;
+
+export const ItemPlannedContainer = styled.div`
+  display: flex;
+  width: 15%;
+  min-width: 180px;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const ConvertItemContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  border-left: ${({ theme }) => `1px solid ${theme.colors.secondary}`};
+  border-right: ${({ theme }) => `1px solid ${theme.colors.secondary}`};
+`;
+
+export const ConvertText = styled.text`
+  color: ${({ theme }) => theme.colors.neutral400};
+  font-family: 'Nunito Sans';
+  font-size: 17px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  margin-left: 20px;
+  white-space: pre-line;
 `;
