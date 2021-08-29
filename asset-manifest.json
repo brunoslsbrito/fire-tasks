@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/billions-task-manager/static/css/main.6dea0f05.chunk.css",
+    "main.js": "/billions-task-manager/static/js/main.01f6f185.chunk.js",
+    "main.js.map": "/billions-task-manager/static/js/main.01f6f185.chunk.js.map",
+    "runtime-main.js": "/billions-task-manager/static/js/runtime-main.9c96ccda.js",
+    "runtime-main.js.map": "/billions-task-manager/static/js/runtime-main.9c96ccda.js.map",
+    "static/js/2.8f6c1ea4.chunk.js": "/billions-task-manager/static/js/2.8f6c1ea4.chunk.js",
+    "static/js/2.8f6c1ea4.chunk.js.map": "/billions-task-manager/static/js/2.8f6c1ea4.chunk.js.map",
+    "static/js/3.2bf86a46.chunk.js": "/billions-task-manager/static/js/3.2bf86a46.chunk.js",
+    "static/js/3.2bf86a46.chunk.js.map": "/billions-task-manager/static/js/3.2bf86a46.chunk.js.map",
+    "index.html": "/billions-task-manager/index.html",
+    "static/css/main.6dea0f05.chunk.css.map": "/billions-task-manager/static/css/main.6dea0f05.chunk.css.map",
+    "static/js/2.8f6c1ea4.chunk.js.LICENSE.txt": "/billions-task-manager/static/js/2.8f6c1ea4.chunk.js.LICENSE.txt",
+    "static/media/addicondark.491ce319.svg": "/billions-task-manager/static/media/addicondark.491ce319.svg",
+    "static/media/addiconlight.f753321f.svg": "/billions-task-manager/static/media/addiconlight.f753321f.svg",
+    "static/media/copyicon.000f2704.svg": "/billions-task-manager/static/media/copyicon.000f2704.svg",
+    "static/media/githubicon.a8e6b97a.svg": "/billions-task-manager/static/media/githubicon.a8e6b97a.svg",
+    "static/media/logo.61cd0dba.svg": "/billions-task-manager/static/media/logo.61cd0dba.svg",
+    "static/media/moonicon.11f2408a.svg": "/billions-task-manager/static/media/moonicon.11f2408a.svg",
+    "static/media/sunicon.9432aa1e.svg": "/billions-task-manager/static/media/sunicon.9432aa1e.svg",
+    "static/media/trashdark.275efb1e.svg": "/billions-task-manager/static/media/trashdark.275efb1e.svg",
+    "static/media/trashlight.7709c08a.svg": "/billions-task-manager/static/media/trashlight.7709c08a.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.9c96ccda.js",
+    "static/js/2.8f6c1ea4.chunk.js",
+    "static/css/main.6dea0f05.chunk.css",
+    "static/js/main.01f6f185.chunk.js"
+  ]
+}
