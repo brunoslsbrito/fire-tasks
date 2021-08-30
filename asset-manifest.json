@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/billions-task-manager/static/css/main.6dea0f05.chunk.css",
-    "main.js": "/billions-task-manager/static/js/main.63c57a30.chunk.js",
-    "main.js.map": "/billions-task-manager/static/js/main.63c57a30.chunk.js.map",
+    "main.js": "/billions-task-manager/static/js/main.cd7498e0.chunk.js",
+    "main.js.map": "/billions-task-manager/static/js/main.cd7498e0.chunk.js.map",
     "runtime-main.js": "/billions-task-manager/static/js/runtime-main.9c96ccda.js",
     "runtime-main.js.map": "/billions-task-manager/static/js/runtime-main.9c96ccda.js.map",
     "static/js/2.8f6c1ea4.chunk.js": "/billions-task-manager/static/js/2.8f6c1ea4.chunk.js",
@@ -26,6 +26,6 @@
     "static/js/runtime-main.9c96ccda.js",
     "static/js/2.8f6c1ea4.chunk.js",
     "static/css/main.6dea0f05.chunk.css",
-    "static/js/main.63c57a30.chunk.js"
+    "static/js/main.cd7498e0.chunk.js"
   ]
 }
