@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import Header from '../../components/header';
-import TaskList from '../TaskList';
+import TaskList from '../../components/TaskList';
 import GlobalStyle, { Themes } from '../../styles/global';
 
 import light from '../../styles/themes/light';
