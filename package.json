@@ -1,6 +1,6 @@
 {
-  "homepage": "http://leongdev.gihub.io/billions-task-manager",
-  "name": "billions-task-list",
+  "homepage": "https://leongdev.github.io/fire-tasks",
+  "name": "fire-tasks",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
