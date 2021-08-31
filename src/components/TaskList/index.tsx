@@ -1,5 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
-
+import { TimePicker } from 'antd';
+import moment from 'moment';
+import 'antd/dist/antd.css';
 import {
   AddIconDark,
   AddIconLight,
@@ -23,8 +25,6 @@ import {
   ItemDescriptionContainer,
   ItemDescriptionText,
   ItemEstimateContainer,
-  ItemEstimateText,
-  ItemEstimateTextAdditive,
   ItemPlannedContainer,
   ItemPlannedText,
   ListTitleContainer,
@@ -33,14 +33,15 @@ import {
   CopyButtonInnerContainer,
   CopyIcon,
   ListFinalBottomContainer,
-  ConvertItemContainer, ConvertText,
+  ConvertItemContainer, ConvertText, TagContainer, ItemTagContainer, ItemTagText,
 } from './styles';
 
 import { Themes } from '../../styles/global';
 
 interface TaskListProps {
-  theme: string;
+  themeType: string;
   convert: boolean;
+  squad:string;
 }
 
 export enum Planned {
@@ -51,6 +52,7 @@ export enum Planned {
 }
 
 interface ListItem {
+  tag:string;
   description: string;
   estimate: string;
   planned: Planned;
@@ -61,7 +63,7 @@ interface HoverProp {
   index: number;
 }
 
-const TaskList: React.FC<TaskListProps> = ({ theme, convert }) => {
+const TaskList: React.FC<TaskListProps> = ({ themeType, convert, squad }) => {
   const [taskList, setTaskList] = useState<Array<ListItem>>([]);
   const [isHover, setHover] = useState<HoverProp>({ isHover: false, index: 0 });
   const [finalText, setFinalText] = useState('');
@@ -74,9 +76,11 @@ const TaskList: React.FC<TaskListProps> = ({ theme, convert }) => {
   }, [convert]);
 
   const onPressAdd = useCallback(() => {
-    setTaskList([...taskList, { description: '', estimate: '', planned: Planned.YES }]);
+    setTaskList([...taskList, {
+      tag: taskList.length > 0 && taskList[taskList.length - 1].tag ? taskList[taskList.length - 1].tag : '', description: '', estimate: '00:00', planned: Planned.YES,
+    }]);
   }, [taskList]);
-
+  const format = 'HH:mm';
   const onPressDelete = (index: number) => {
     setHover({ isHover: false, index: 0 });
     setTaskList(taskList.filter((_, localIndex) => localIndex !== index));
@@ -88,11 +92,23 @@ const TaskList: React.FC<TaskListProps> = ({ theme, convert }) => {
     setTaskList(newArray);
   };
 
-  const onEditEstimate = (index: number) => (e: any) => {
-    if (e.target.validity.valid && e.target.value.length < 3) {
+  const onEditTag = (index: number) => (e: any) => {
+    const newArray = [...taskList];
+    newArray[index].tag = e.target.value;
+    setTaskList(newArray);
+  };
+
+  const onEditEstimate = (index: number) => (value: any) => {
+    if (value) {
       const newArray = [...taskList];
-      const newValue = e.target.value.replace('h', '');
-      newArray[index].estimate = newValue;
+      const hour = moment(value).hours();
+      const minute = moment(value).minutes();
+
+      newArray[index].estimate = `${hour.toString().length === 1 ? `0${hour.toString()}` : hour.toString()}:${minute.toString().length === 1 ? `0${minute.toString()}` : minute.toString()}`;
+      setTaskList(newArray);
+    } else {
+      const newArray = [...taskList];
+      newArray[index].estimate = '00:00';
       setTaskList(newArray);
     }
   };
@@ -107,9 +123,16 @@ const TaskList: React.FC<TaskListProps> = ({ theme, convert }) => {
   };
 
   // eslint-disable-next-line no-nested-ternary
-  const filterEstimate = (item: string) => (item.length > 1 ? (
-    item[0] === '0' ? item.slice(1, 2) : item
-  ) : item);
+  const filterEstimate = (item: string) => {
+    let hours = item.slice(0, 2);
+    let minutes = item.slice(3, 5);
+
+    if (hours[0] === '0') hours = item.slice(1, 2);
+    if (minutes[0] === '0') minutes = item.slice(4, 5);
+
+    if (minutes[0] === '0') return `${hours}h`;
+    return `${hours}h ${minutes}m`;
+  };
 
   const onEditPlanned = (index: number) => {
     const newArray = [...taskList];
@@ -118,9 +141,7 @@ const TaskList: React.FC<TaskListProps> = ({ theme, convert }) => {
   };
 
   const renderTrash = () => (
-    theme === Themes.LIGHT
-      ? <TrashIconLight />
-      : <TrashIconDark />
+    themeType === Themes.LIGHT ? <TrashIconLight /> : <TrashIconDark />
   );
 
   const renderItem = (item: ListItem, index: number) => (
@@ -137,6 +158,13 @@ const TaskList: React.FC<TaskListProps> = ({ theme, convert }) => {
             </TaskItemNumberText>
           )}
       </TaskItemNumberContainer>
+      <ItemTagContainer>
+        <ItemTagText
+          value={taskList[index].tag}
+          placeholder="Add Tag"
+          onChange={onEditTag(index)}
+        />
+      </ItemTagContainer>
       <ItemDescriptionContainer>
         <ItemDescriptionText
           value={taskList[index].description}
@@ -145,17 +173,12 @@ const TaskList: React.FC<TaskListProps> = ({ theme, convert }) => {
         />
       </ItemDescriptionContainer>
       <ItemEstimateContainer>
-        <ItemEstimateText
-          value={taskList[index].estimate}
+        <TimePicker
+          allowClear
+          defaultValue={moment(taskList[index].estimate, format)}
           onChange={onEditEstimate(index)}
-          placeholder="0h"
-          type="text"
-          pattern="[0-9]*"
+          format={format}
         />
-        {
-          taskList[index].estimate.length > 0
-          && (<ItemEstimateTextAdditive>h</ItemEstimateTextAdditive>)
-        }
       </ItemEstimateContainer>
       <ItemPlannedContainer>
         <ItemPlannedText onClick={() => onEditPlanned(index)}>
@@ -166,7 +189,7 @@ const TaskList: React.FC<TaskListProps> = ({ theme, convert }) => {
   );
 
   const getNextLine = (item: ListItem) => (
-    `- [DEV APP] ${item.description} / estimate:"${filterEstimate(item.estimate)}h" assignee:"Unassigned" cfield:"SQUAD:SQUAD_BILLIONS" cfield:"Tipo de Subtask:DEV" cfield:"Fora do Compromisso:${item.planned === Planned.YES ? 'Não' : 'Sim'}"`
+    `- [ ${item.tag} ] ${item.description} / estimate:"${filterEstimate(item.estimate)}" assignee:"Unassigned" cfield:"SQUAD:${squad}" cfield:"Tipo de Subtask:DEV" cfield:"Fora do Compromisso:${item.planned === Planned.YES ? 'Não' : 'Sim'}"`
   );
 
   const renderList = () => (
@@ -174,6 +197,9 @@ const TaskList: React.FC<TaskListProps> = ({ theme, convert }) => {
       <ListHeaderOutContainer>
         <ListHeaderContainer>
           <NumberContainer />
+          <TagContainer>
+            <Title>Tag</Title>
+          </TagContainer>
           <DescriptionContainer>
             <Title>Description</Title>
           </DescriptionContainer>
@@ -191,7 +217,7 @@ const TaskList: React.FC<TaskListProps> = ({ theme, convert }) => {
       <ListBottomContainer>
         <AddItemContainer onClick={onPressAdd}>
           {
-                theme === Themes.LIGHT
+                themeType === Themes.LIGHT
                   ? <AddIconLight />
                   : <AddIconDark />
               }

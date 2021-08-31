@@ -63,7 +63,16 @@ export const AddItemTitle = styled.h3`
 
 export const DescriptionContainer = styled.div`
   display: flex;
-  width: 67%;
+  width: 57%;
+  min-width: 180px;
+  align-items: center;
+  justify-content: center;
+  border-right: ${({ theme }) => `1px solid ${theme.colors.secondary}`};
+`;
+
+export const TagContainer = styled.div`
+  display: flex;
+  width: 10%;
   min-width: 180px;
   align-items: center;
   justify-content: center;
@@ -238,7 +247,17 @@ export const TrashIconDark = styled.img.attrs({
 export const ItemDescriptionContainer = styled.div`
   height: 50px;
   display: flex;
-  width: 67%;
+  width: 57%;
+  min-width: 180px;
+  align-items: center;
+  justify-content: center;
+  border-right: ${({ theme }) => `1px solid ${theme.colors.secondary}`}; 
+`;
+
+export const ItemTagContainer = styled.div`
+  height: 50px;
+  display: flex;
+  width: 10%;
   min-width: 180px;
   align-items: center;
   justify-content: center;
@@ -254,6 +273,18 @@ export const ItemDescriptionText = styled.input`
   font-size: 20px;
   outline: none;
   background: ${({ theme }) => theme.colors.background};
+`;
+
+export const ItemTagText = styled.input`
+  color: ${({ theme }) => theme.colors.neutral400};
+  width: 98%;
+  height: 80%; 
+  border: none;
+  font-family: 'Nunito Sans';
+  font-size: 20px;
+  outline: none;
+  background: ${({ theme }) => theme.colors.background};
+  margin-left: 10px;
 `;
 
 export const ItemEstimateText = styled.input`

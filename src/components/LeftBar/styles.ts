@@ -7,20 +7,22 @@ import logo from '../../assets/icons/logo.svg';
 
 export const Container = styled.div`
   display: flex;
-  height: 50px;
-  background: ${({ theme }) => theme.colors.neutral800}; 
+  height: 100%;
+  width: 70px;
+  background: ${({ theme }) => theme.colors.neutral100}; 
   justify-content: space-between;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export const IconsContainer = styled.div`
   display: flex;
-  height: 50px;
-  background: ${({ theme }) => theme.colors.neutral800}; 
-  justify-content: center;
+  height: 100px;
+  width: 100%;
   align-items: center;
-  flex-direction: row;
-  margin-right: 30px;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 20px;
 `;
 
 export const MoonIcon = styled.img.attrs({
@@ -31,7 +33,6 @@ export const MoonIcon = styled.img.attrs({
   height: 25px;
   width: 25px;
   margin-left: 12px;
-  margin-top: 12px;
 `;
 
 export const SunIcon = styled.img.attrs({
@@ -42,7 +43,6 @@ export const SunIcon = styled.img.attrs({
   height: 25px;
   width: 25px;
   margin-left: 12px;
-  margin-top: 12px;
 `;
 
 export const GithubIcon = styled.img.attrs({
@@ -60,10 +60,9 @@ export const LogoImage = styled.img.attrs({
   src: logo,
   alt: 'logo',
 })`
-  height: 30px;
-  width: 130px;
-  margin-left: 30px;
-  margin-top: 10px;
+  height: 40px;
+  width:40px;
+  margin-top: 20px;
 `;
 
 export const IconButton = styled.div`

@@ -1,27 +1,35 @@
 import styled from 'styled-components';
 
+export const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+`;
+
 export const TitleContainer = styled.div`
   display: flex;
-  width: 96%;
+  width: 100%;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   min-width: 700px;
+  margin-top: 25px;
 `;
 
 export const TitleOutContainer = styled.div`
   display: flex;
-  height: 90px;
+  flex-direction: column;
   width: 100%;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-end;
 `;
 
 export const Title = styled.h1`
   color: ${({ theme }) => theme.colors.neutral600};
-  font-family: 'Lobster';  
-
+  font-family: 'Lobster';
+  margin-left: 30px;
 `;
 
 interface ButtonTitleProps {
@@ -30,7 +38,8 @@ interface ButtonTitleProps {
 
 export const ButtonTitle = styled.h4<ButtonTitleProps>`
   color: ${({ inverted, theme }) => (inverted ? theme.colors.primary : '#FFFF')}; 
-  font-family: 'Nunito Sans';
+  font-family: 'Nunito Sans'; font-size: 20px;
+  margin-top: 10px;
 `;
 
 interface ConvertButtonProps {
@@ -38,16 +47,33 @@ interface ConvertButtonProps {
 }
 
 export const ConvertButton = styled.div<ConvertButtonProps>`
+  margin-right: 30px; 
   display: flex;
   align-items: center;
   justify-content: center; 
   width: 120px;
   height: 35px;
   border-radius: 10px;
-  background: ${({ theme, convert }) => (!convert ? theme.colors.primary : theme.colors.background)};
+  background: linear-gradient(90deg,#FD8F0A,#EC3F3E,#E21478);
   border:  ${({ convert, theme }) => convert && `2px solid ${theme.colors.primary}`}; 
   cursor: pointer;
   &:hover {  
-    background: ${({ convert }) => !convert && '#BFA150'};  
+    background: ${({ convert }) => !convert && '#E21478'};  
+  }
+`;
+
+export const EditButton = styled.div<ConvertButtonProps>`
+  margin-right: 30px; 
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  width: 120px;
+  height: 35px; 
+  border-radius: 10px;
+  color: ${({ theme }) => theme.colors.neutral800};
+  border:  2px solid #E21478; 
+  cursor: pointer;
+  &:hover {  
+    background: ${({ convert }) => !convert && '#E21478'};  
   }
 `;

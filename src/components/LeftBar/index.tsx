@@ -12,11 +12,11 @@ import {
 } from './styles';
 import { Themes } from '../../styles/global';
 
-interface HeaderProps {
+interface LeftBarProps {
   toggleTheme(): void;
 }
 
-const Header: React.FC<HeaderProps> = ({ toggleTheme }) => {
+const LeftBar: React.FC<LeftBarProps> = ({ toggleTheme }) => {
   const { title } = useContext(ThemeContext);
 
   const onClickGithub = () => {
@@ -38,4 +38,4 @@ const Header: React.FC<HeaderProps> = ({ toggleTheme }) => {
   );
 };
 
-export default Header;
+export default LeftBar;

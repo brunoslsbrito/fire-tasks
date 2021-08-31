@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { ThemeProvider } from 'styled-components';
-import Header from '../../components/header';
+import LeftBar from '../../components/LeftBar';
 import TaskList from '../../components/TaskList';
 import GlobalStyle, { Themes } from '../../styles/global';
 
@@ -9,9 +9,12 @@ import dark from '../../styles/themes/dark';
 
 import {
   ButtonTitle,
+  Container,
   ConvertButton,
+  EditButton,
   Title,
-  TitleContainer, TitleOutContainer,
+  TitleContainer,
+  TitleOutContainer,
 } from './styles';
 
 const Home: React.FC = () => {
@@ -26,21 +29,27 @@ const Home: React.FC = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <div>
+      <Container>
         <GlobalStyle />
-        <Header toggleTheme={toggleTheme} />
+        <LeftBar toggleTheme={toggleTheme} />
         <TitleOutContainer>
           <TitleContainer>
             <Title>Task Manager</Title>
-            <ConvertButton onClick={toggleConvert} convert={convert}>
-              {convert
-                ? <ButtonTitle inverted> Edit </ButtonTitle>
-                : <ButtonTitle> Convert </ButtonTitle>}
-            </ConvertButton>
+            {convert
+              ? (
+                <EditButton onClick={toggleConvert} convert={convert}>
+                  <ButtonTitle inverted={convert}> Edit </ButtonTitle>
+                </EditButton>
+              )
+              : (
+                <ConvertButton onClick={toggleConvert} convert={convert}>
+                  <ButtonTitle> Convert </ButtonTitle>
+                </ConvertButton>
+              )}
           </TitleContainer>
+          <TaskList themeType={theme.title} convert={convert} squad="SQUAD_BILLIONS" />
         </TitleOutContainer>
-        <TaskList theme={theme.title} convert={convert} />
-      </div>
+      </Container>
     </ThemeProvider>
   );
 };
