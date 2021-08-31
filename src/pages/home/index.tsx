@@ -8,6 +8,9 @@ import light from '../../styles/themes/light';
 import dark from '../../styles/themes/dark';
 
 import {
+  BackgroundDark,
+  BackgroundLight,
+
   ButtonTitle,
   Container,
   ConvertButton,
@@ -37,6 +40,7 @@ const Home: React.FC = () => {
       <Container>
         <GlobalStyle />
         <LeftBar toggleTheme={toggleTheme} />
+        {theme.title === Themes.LIGHT ? <BackgroundLight /> : <BackgroundDark /> }
         <TitleOutContainer>
           <TitleContainer>
             <Title>Task Manager</Title>

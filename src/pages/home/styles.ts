@@ -1,5 +1,30 @@
 import styled from 'styled-components';
 
+import backgroundDark from '../../assets/icons/backgrounddark.svg';
+import backgroundLight from '../../assets/icons/backgroundlight.svg';
+
+export const BackgroundLight = styled.img.attrs({
+  src: backgroundLight,
+  alt: 'backgroundLight',
+})`
+  position: absolute;
+  bottom: -100px;
+  height: 500px; 
+  width: 100%;  
+  z-index: -1;
+`;
+
+export const BackgroundDark = styled.img.attrs({
+  src: backgroundDark,
+  alt: 'backgroundDark',
+})`
+  position: absolute;
+  bottom: -100px;
+  height: 500px;
+  width: 100%;
+  z-index: -1;
+`;
+
 export const Container = styled.div`
   display: flex;
   flex-direction: row;
