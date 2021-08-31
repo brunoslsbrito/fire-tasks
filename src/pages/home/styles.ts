@@ -47,7 +47,6 @@ interface ConvertButtonProps {
 }
 
 export const ConvertButton = styled.div<ConvertButtonProps>`
-  margin-right: 30px; 
   display: flex;
   align-items: center;
   justify-content: center; 
@@ -62,11 +61,45 @@ export const ConvertButton = styled.div<ConvertButtonProps>`
   }
 `;
 
-export const EditButton = styled.div<ConvertButtonProps>`
-  margin-right: 30px; 
+export const ItemEstimateText = styled.input`
+  color: ${({ theme }) => theme.colors.neutral400};
+  width: 90%;
+  height: 80%; 
+  border: none;
+  font-family: 'Nunito Sans';
+  font-size: 20px;
+  outline: none;
+  background: ${({ theme }) => theme.colors.neutral100};
+  text-align: center;
+  margin-left: 10px;
+`;
+
+export const RightContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 450px;
+  height: 35px;
+  margin-right: 30px;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const InputContainer = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center; 
+  justify-content: flex-start;
+  width: 280px;
+  height: 35px;
+  background: ${({ theme }) => theme.colors.neutral100};
+  margin-right: 30px; 
+  border-radius: 10px;
+  border:  ${({ theme }) => `2px solid ${theme.colors.secondary}`};
+`;
+
+export const EditButton = styled.div<ConvertButtonProps>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 120px;
   height: 35px; 
   border-radius: 10px;

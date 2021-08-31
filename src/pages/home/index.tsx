@@ -11,13 +11,14 @@ import {
   ButtonTitle,
   Container,
   ConvertButton,
-  EditButton,
+  EditButton, InputContainer, ItemEstimateText, RightContainer,
   Title,
   TitleContainer,
   TitleOutContainer,
 } from './styles';
 
 const Home: React.FC = () => {
+  const [squad, setSquad] = useState('');
   const [theme, setTheme] = useState(light);
   const [convert, setConvert] = useState(false);
 
@@ -27,6 +28,10 @@ const Home: React.FC = () => {
   const toggleConvert = useCallback(() => (
     convert ? setConvert(false) : setConvert(true)), [convert]);
 
+  const onEditSquad = (e: any) => {
+    setSquad(e.target.value);
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <Container>
@@ -35,19 +40,27 @@ const Home: React.FC = () => {
         <TitleOutContainer>
           <TitleContainer>
             <Title>Task Manager</Title>
-            {convert
-              ? (
-                <EditButton onClick={toggleConvert} convert={convert}>
-                  <ButtonTitle inverted={convert}> Edit </ButtonTitle>
-                </EditButton>
-              )
-              : (
-                <ConvertButton onClick={toggleConvert} convert={convert}>
-                  <ButtonTitle> Convert </ButtonTitle>
-                </ConvertButton>
-              )}
+            <RightContainer>
+              <InputContainer>
+                <ItemEstimateText
+                  placeholder="Add Squad Name"
+                  onChange={onEditSquad}
+                />
+              </InputContainer>
+              {convert
+                ? (
+                  <EditButton onClick={toggleConvert} convert={convert}>
+                    <ButtonTitle inverted={convert}> Edit </ButtonTitle>
+                  </EditButton>
+                )
+                : (
+                  <ConvertButton onClick={toggleConvert} convert={convert}>
+                    <ButtonTitle> Convert </ButtonTitle>
+                  </ConvertButton>
+                )}
+            </RightContainer>
           </TitleContainer>
-          <TaskList themeType={theme.title} convert={convert} squad="SQUAD_BILLIONS" />
+          <TaskList themeType={theme.title} convert={convert} squad={squad} />
         </TitleOutContainer>
       </Container>
     </ThemeProvider>
