@@ -24,7 +24,8 @@ export const ListHeaderOutContainer = styled.div`
   min-width: 700px;
   border-top: ${({ theme }) => `1px solid ${theme.colors.secondary}`};
   border-top-left-radius: 10px;
-  border-top-right-radius: 10px; 
+  border-top-right-radius: 10px;
+
 `;
 
 export const ListHeaderContainer = styled.div`
@@ -146,6 +147,7 @@ export const ListBottomContainer = styled.div`
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px; 
   align-items: center;
+  background: ${({ theme }) => theme.colors.background};
 `;
 
 export const ListFinalBottomContainer = styled.div`
@@ -208,6 +210,7 @@ export const TaskItemContainer = styled.div`
   align-items: center;
   height: 50px;
   border-bottom: ${({ theme }) => `1px solid ${theme.colors.secondary}`};
+  background: ${({ theme }) => theme.colors.background};
 `;
 
 export const TaskItemNumberText = styled.h2`
@@ -251,7 +254,7 @@ export const ItemDescriptionContainer = styled.div`
   min-width: 180px;
   align-items: center;
   justify-content: center;
-  border-right: ${({ theme }) => `1px solid ${theme.colors.secondary}`}; 
+  border-right: ${({ theme }) => `1px solid ${theme.colors.secondary}`};
 `;
 
 export const ItemTagContainer = styled.div`
@@ -261,7 +264,9 @@ export const ItemTagContainer = styled.div`
   min-width: 180px;
   align-items: center;
   justify-content: center;
-  border-right: ${({ theme }) => `1px solid ${theme.colors.secondary}`}; 
+  border-right: ${({ theme }) => `1px solid ${theme.colors.secondary}`};
+  border-bottom: ${({ theme }) => `1px solid ${theme.colors.secondary}`};
+  background: ${({ theme }) => theme.colors.background};
 `;
 
 export const ItemDescriptionText = styled.input`

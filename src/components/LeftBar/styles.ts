@@ -7,7 +7,7 @@ import logo from '../../assets/icons/logo.svg';
 
 export const Container = styled.div`
   display: flex;
-  height: 100%;
+
   width: 70px;
   background: ${({ theme }) => theme.colors.neutral100}; 
   justify-content: space-between;

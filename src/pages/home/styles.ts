@@ -7,10 +7,10 @@ export const BackgroundLight = styled.img.attrs({
   src: backgroundLight,
   alt: 'backgroundLight',
 })`
+  display: flex;
+  bottom: 0px;
   position: absolute;
-  bottom: -100px;
-  height: 500px; 
-  width: 100%;  
+  width: 100%;
   z-index: -1;
 `;
 
@@ -18,9 +18,9 @@ export const BackgroundDark = styled.img.attrs({
   src: backgroundDark,
   alt: 'backgroundDark',
 })`
+  display: flex;
+  bottom: 0px;
   position: absolute;
-  bottom: -100px;
-  height: 500px;
   width: 100%;
   z-index: -1;
 `;
@@ -33,6 +33,7 @@ export const Container = styled.div`
   bottom: 0;
   width: 100%;
   height: 100%;
+
 `;
 
 export const TitleContainer = styled.div`
@@ -49,6 +50,7 @@ export const TitleOutContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  overflow-y: scroll;
 `;
 
 export const Title = styled.h1`

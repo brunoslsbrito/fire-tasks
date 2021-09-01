@@ -189,7 +189,7 @@ const TaskList: React.FC<TaskListProps> = ({ themeType, convert, squad }) => {
   );
 
   const getNextLine = (item: ListItem) => (
-    `- [ ${item.tag} ] ${item.description} / estimate:"${filterEstimate(item.estimate)}" assignee:"Unassigned" cfield:"SQUAD:${squad}" cfield:"Tipo de Subtask:DEV" cfield:"Fora do Compromisso:${item.planned === Planned.YES ? 'Não' : 'Sim'}"`
+    `- ${item.tag ? `[${item.tag}]` : ''} ${item.description} / estimate:"${filterEstimate(item.estimate)}" assignee:"Unassigned" cfield:"SQUAD:${squad}" cfield:"Tipo de Subtask:DEV" cfield:"Fora do Compromisso:${item.planned === Planned.YES ? 'Não' : 'Sim'}"`
   );
 
   const renderList = () => (
