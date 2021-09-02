@@ -3,5 +3,7 @@
 ### [Fire Tasks](https://leongdev.github.io/fire-tasks/) is an open-source platform that simplifies the creation of tasks in [jira](https://www.atlassian.com/software/jira).
 # How to use 
 
+![](https://gfycat.com/heartyimpartialeyelashpitviper)
+
 # Credits
 * Billions, the bast squad.
