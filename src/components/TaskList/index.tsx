@@ -23,7 +23,7 @@ import {
   ListFinalBottomContainer,
   ConvertItemContainer,
   ConvertText,
-  TagContainer,
+  TagContainer, OtherTitle,
 } from './styles';
 
 import { Themes } from '../../styles/global';
@@ -127,7 +127,7 @@ const TaskList: React.FC<TaskListProps> = ({ themeType, convert, squad }) => {
         <ListHeaderOutContainer>
           <ListHeaderContainer>
             <ListTitleContainer>
-              <Title>List</Title>
+              <OtherTitle>List</OtherTitle>
             </ListTitleContainer>
             <CopyButtonContainer>
               <CopyButtonInnerContainer onClick={onPressCopy}>

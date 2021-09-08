@@ -50,9 +50,15 @@ export const Title = styled.h1`
     color: ${({ theme }) => theme.colors.neutral600};
 `;
 
+export const OtherTitle = styled.h1`
+
+    color: ${({ theme }) => theme.colors.neutral600};
+`;
+
 export const CopyTitle = styled.h2`
     color: ${({ theme }) => theme.colors.primary};
   margin-left: 10px;
+  margin-top: 10px;
 `;
 
 export const AddItemTitle = styled.h3`
@@ -85,6 +91,7 @@ export const ListTitleContainer = styled.div`
   align-items: flex-start; 
   margin-left: 15px;
   margin-top: 5px;
+  justify-content: center;
 `;
 
 export const CopyButtonContainer = styled.div`
