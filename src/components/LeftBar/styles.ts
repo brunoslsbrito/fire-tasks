@@ -28,7 +28,7 @@ export const IconsContainer = styled.div`
 export const MoonIcon = styled.img.attrs({
   src: moon,
   alt: 'moon',
-})`
+})` 
 
   height: 25px;
   width: 25px;

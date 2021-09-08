@@ -111,7 +111,11 @@ export const RightContainer = styled.div`
   justify-content: center;
 `;
 
-export const InputContainer = styled.div`
+interface InputContainerProps {
+    canConvert: boolean
+}
+
+export const InputContainer = styled.div<InputContainerProps>`
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -120,7 +124,7 @@ export const InputContainer = styled.div`
   background: ${({ theme }) => theme.colors.neutral100};
   margin-right: 30px; 
   border-radius: 10px;
-  border:  ${({ theme }) => `2px solid ${theme.colors.secondary}`};
+  border:  ${({ theme, canConvert }) => `2px solid ${canConvert ? theme.colors.secondary : 'red'}`};
 `;
 
 export const EditButton = styled.div<ConvertButtonProps>`
@@ -136,4 +140,12 @@ export const EditButton = styled.div<ConvertButtonProps>`
   &:hover {  
     background: ${({ convert }) => !convert && '#E21478'};  
   }
+`;
+
+export const BlockMessage = styled.h3`
+  display: flex;
+  position: absolute;
+  margin-top: 80px;
+  margin-left: 0px;
+  color: red;
 `;

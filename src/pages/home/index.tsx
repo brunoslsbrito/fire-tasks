@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import LeftBar from '../../components/LeftBar';
 import TaskList from '../../components/TaskList';
@@ -9,18 +9,21 @@ import dark from '../../styles/themes/dark';
 
 import {
   BackgroundDark,
-  BackgroundLight,
-
+  BackgroundLight, BlockMessage,
   ButtonTitle,
   Container,
   ConvertButton,
-  EditButton, InputContainer, ItemEstimateText, RightContainer,
+  EditButton,
+  InputContainer,
+  ItemEstimateText,
+  RightContainer,
   Title,
   TitleContainer,
   TitleOutContainer,
 } from './styles';
 
 const Home: React.FC = () => {
+  const [canConvert, setConvertState] = useState(true);
   const [squad, setSquad] = useState('');
   const [theme, setTheme] = useState(light);
   const [convert, setConvert] = useState(false);
@@ -35,6 +38,12 @@ const Home: React.FC = () => {
     setSquad(e.target.value);
   };
 
+  useEffect(() => {
+    if (squad.length > 0) {
+      setConvertState(true);
+    }
+  }, [squad]);
+
   return (
     <ThemeProvider theme={theme}>
       <Container>
@@ -45,12 +54,14 @@ const Home: React.FC = () => {
           <TitleContainer>
             <Title>Task Manager</Title>
             <RightContainer>
-              <InputContainer>
+              <InputContainer canConvert={canConvert}>
                 <ItemEstimateText
                   placeholder="Add Squad Name"
                   onChange={onEditSquad}
                 />
+                {!canConvert && <BlockMessage>Add a Squad Name</BlockMessage>}
               </InputContainer>
+
               {convert
                 ? (
                   <EditButton onClick={toggleConvert} convert={convert}>
@@ -58,13 +69,28 @@ const Home: React.FC = () => {
                   </EditButton>
                 )
                 : (
-                  <ConvertButton onClick={toggleConvert} convert={convert}>
+                  <ConvertButton
+                    onClick={
+                    () => (squad.length === 0
+                      ? setConvertState(false)
+                      : toggleConvert())
+                    }
+                    convert={convert}
+                  >
                     <ButtonTitle> Convert </ButtonTitle>
                   </ConvertButton>
                 )}
             </RightContainer>
           </TitleContainer>
-          <TaskList themeType={theme.title} convert={convert} squad={squad} />
+          <TaskList
+            themeType={
+                theme.title === Themes.LIGHT
+                  ? Themes.LIGHT
+                  : Themes.DARK
+            }
+            convert={convert}
+            squad={squad}
+          />
         </TitleOutContainer>
       </Container>
     </ThemeProvider>
