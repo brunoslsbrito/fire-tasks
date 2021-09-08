@@ -53,7 +53,13 @@ export interface HoverProp {
 }
 
 const TaskList: React.FC<TaskListProps> = ({ themeType, convert, squad }) => {
-  const [taskList, setTaskList] = useState<Array<ListItem>>([]);
+  const [taskList, setTaskList] = useState<Array<ListItem>>(() => {
+    const localTaskList = localStorage.getItem('@taskList');
+    if (localTaskList && localTaskList.length > 0) {
+      return JSON.parse(localTaskList);
+    }
+    return [];
+  });
   const [isHover, setHover] = useState<HoverProp>({ isHover: false, index: 0 });
   const [finalText, setFinalText] = useState('');
 
@@ -64,21 +70,19 @@ const TaskList: React.FC<TaskListProps> = ({ themeType, convert, squad }) => {
     setFinalText(text);
   }, [convert]);
 
+  useEffect(() => {
+    localStorage.setItem('@taskList', JSON.stringify(taskList));
+  }, [taskList]);
+
   const onPressAdd = useCallback(() => {
     setTaskList([...taskList, {
       tag: taskList.length > 0 && taskList[taskList.length - 1].tag ? taskList[taskList.length - 1].tag : '', description: '', estimate: '00:00', planned: Planned.YES,
     }]);
   }, [taskList]);
-  const format = 'HH:mm';
+
   const onPressDelete = (index: number) => {
     setHover({ isHover: false, index: 0 });
     setTaskList(taskList.filter((_, localIndex) => localIndex !== index));
-  };
-
-  const onEditTag = (index: number) => (e: any) => {
-    const newArray = [...taskList];
-    newArray[index].tag = e.target.value;
-    setTaskList(newArray);
   };
 
   const onPressCopy = async () => {

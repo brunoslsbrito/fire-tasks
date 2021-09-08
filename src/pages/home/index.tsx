@@ -24,9 +24,22 @@ import {
 
 const Home: React.FC = () => {
   const [canConvert, setConvertState] = useState(true);
-  const [squad, setSquad] = useState('');
+  const [squad, setSquad] = useState(() => {
+    const localSquad = localStorage.getItem('@squad_name');
+    if (localSquad) {
+      if (localSquad.length > 30) {
+        return '';
+      }
+      return localSquad;
+    }
+    return '';
+  });
   const [theme, setTheme] = useState(light);
   const [convert, setConvert] = useState(false);
+
+  useEffect(() => {
+    localStorage.setItem('@squad_name', squad);
+  }, [squad]);
 
   const toggleTheme = useCallback(() => (
     theme.title === Themes.LIGHT ? setTheme(dark) : setTheme(light)), [theme]);
@@ -56,6 +69,7 @@ const Home: React.FC = () => {
             <RightContainer>
               <InputContainer canConvert={canConvert}>
                 <ItemEstimateText
+                  value={squad}
                   placeholder="Add Squad Name"
                   onChange={onEditSquad}
                 />
