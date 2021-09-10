@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/fire-tasks/static/css/main.6dea0f05.chunk.css",
-    "main.js": "/fire-tasks/static/js/main.6f985255.chunk.js",
-    "main.js.map": "/fire-tasks/static/js/main.6f985255.chunk.js.map",
+    "main.js": "/fire-tasks/static/js/main.cd259e02.chunk.js",
+    "main.js.map": "/fire-tasks/static/js/main.cd259e02.chunk.js.map",
     "runtime-main.js": "/fire-tasks/static/js/runtime-main.69fac21e.js",
     "runtime-main.js.map": "/fire-tasks/static/js/runtime-main.69fac21e.js.map",
     "static/css/2.786ae0dd.chunk.css": "/fire-tasks/static/css/2.786ae0dd.chunk.css",
@@ -20,7 +20,7 @@
     "static/media/backgroundlight.05fc63ab.svg": "/fire-tasks/static/media/backgroundlight.05fc63ab.svg",
     "static/media/copyicon.b2a9c14c.svg": "/fire-tasks/static/media/copyicon.b2a9c14c.svg",
     "static/media/githubicon.55b351b5.svg": "/fire-tasks/static/media/githubicon.55b351b5.svg",
-    "static/media/logo.77b49e96.svg": "/fire-tasks/static/media/logo.77b49e96.svg",
+    "static/media/logo.846060fd.svg": "/fire-tasks/static/media/logo.846060fd.svg",
     "static/media/moonicon.635359ad.svg": "/fire-tasks/static/media/moonicon.635359ad.svg",
     "static/media/sunicon.9beaa379.svg": "/fire-tasks/static/media/sunicon.9beaa379.svg",
     "static/media/trashdark.275efb1e.svg": "/fire-tasks/static/media/trashdark.275efb1e.svg",
@@ -31,6 +31,6 @@
     "static/css/2.786ae0dd.chunk.css",
     "static/js/2.0ec742d1.chunk.js",
     "static/css/main.6dea0f05.chunk.css",
-    "static/js/main.6f985255.chunk.js"
+    "static/js/main.cd259e02.chunk.js"
   ]
 }
