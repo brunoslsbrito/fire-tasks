@@ -80,11 +80,11 @@ export const ConvertButton = styled.div<ConvertButtonProps>`
   width: 120px;
   height: 35px;
   border-radius: 10px;
-  background: linear-gradient(90deg,#FD8F0A,#EC3F3E,#E21478);
+  background: linear-gradient(90deg,#61D9FF,#53CBFF,#1A90FA);
   border:  ${({ convert, theme }) => convert && `2px solid ${theme.colors.primary}`}; 
   cursor: pointer;
   &:hover {  
-    background: ${({ convert }) => !convert && '#E21478'};  
+    background: ${({ convert }) => !convert && '#1A90FA'};  
   }
 `;
 
@@ -135,10 +135,10 @@ export const EditButton = styled.div<ConvertButtonProps>`
   height: 35px; 
   border-radius: 10px;
   color: ${({ theme }) => theme.colors.neutral800};
-  border:  2px solid #E21478; 
+  border:  2px solid #1A90FA; 
   cursor: pointer;
   &:hover {  
-    background: ${({ convert }) => !convert && '#E21478'};  
+    background: ${({ convert }) => !convert && '#1A90FA'};  
   }
 `;
 
