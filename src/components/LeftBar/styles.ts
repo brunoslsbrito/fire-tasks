@@ -56,9 +56,9 @@ export const GithubIcon = styled.img.attrs({
   margin-top: 12px;
 `;
 
-export const LogoImage = styled.img.attrs({
-  src: logo,
-  alt: 'logo',
+export const LogoImage = styled.object.attrs({
+  type: 'image/svg+xml',
+  data: logo,
 })`
   height: 40px;
   width:40px;
